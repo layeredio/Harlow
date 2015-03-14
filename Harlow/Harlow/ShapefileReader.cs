@@ -155,6 +155,13 @@ namespace Harlow
                         tempFeature.Coordinates.Add(segmentPoints);
                     }
 
+                    int colNum = 0;
+                    foreach (string col in _Dbase.FieldNames)
+                    {
+                        tempFeature.Properties.Add(col.Trim(), _Dbase[a][colNum].Trim());
+                        colNum++;
+                    }
+
                     _Features[a] = tempFeature;
                 }
             }

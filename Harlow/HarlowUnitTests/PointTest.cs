@@ -25,6 +25,7 @@ namespace HarlowUnitTests
             Assert.AreEqual(reader.Features[38186].Coordinates[0][0].Y, 61.541870116397909);
 
             Assert.AreEqual(reader.Features[0].Properties.Count, 5);
+            
             Assert.AreEqual(reader.Features[0].Properties["nam"], "Dunseith");
             Assert.AreEqual(reader.Features[0].Properties["f_code"], "AL020");
             Assert.AreEqual(reader.Features[0].Properties["pop"], "773");

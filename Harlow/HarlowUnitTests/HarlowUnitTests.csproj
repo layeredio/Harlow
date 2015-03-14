@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PointTest.cs" />
+    <Compile Include="LineTest.cs" />
+    <Compile Include="PolygonTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shapefiles\Line\tl_2014_06075_roads.dbf" />
