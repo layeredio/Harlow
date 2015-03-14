@@ -82,6 +82,8 @@ namespace Harlow
                     for (int b = 0; b < 11; ++b)
                     {
                         bbuffer = br.ReadByte();
+                        if (bbuffer == 0) { continue; } // ignore nulls
+                        
                         _FieldNames[a] += (char)bbuffer;
                     }
 

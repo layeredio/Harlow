@@ -11,11 +11,10 @@ namespace Harlow
         public VectorFeature(int numOfParts)
         {
             Coordinates = new List<PointD[]>(numOfParts);
+            Properties = new Dictionary<string, string>(numOfParts);
             Bbox = new double[4];
-            Key = Guid.NewGuid();
         }
 
-        public Guid Key { get; set; }
         
         public ShapeType Type { get; set; }
 

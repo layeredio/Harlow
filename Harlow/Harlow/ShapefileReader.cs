@@ -24,13 +24,15 @@ namespace Harlow
         private int[] _OffsetOfRecord;
         private int[] _LengthOfRecord;
         private int _FeatureCount;
-        private VectorFeature[] _features;
+        private VectorFeature[] _Features;
+        private Dbase _Dbase;
 
 
         public ShapeFileReader(string filename)
         {
             _Filename = filename;
             _BBox = new double[4];
+            _Dbase = new Dbase(filename);
 
             ParseHeader(filename);// .shx file
             ReadIndex(filename); // .shx file
@@ -40,10 +42,10 @@ namespace Harlow
         {
             get
             {
-                if (_features == null)
+                if (_Features == null)
                     LoadFile();
 
-                return _features; 
+                return _Features; 
             }
         }
 
@@ -62,7 +64,7 @@ namespace Harlow
             PointD[] tempPoints;
             PointD[] segmentPoints;
 
-            _features = new VectorFeature[_FeatureCount];
+            _Features = new VectorFeature[_FeatureCount];
 
 
             if (_ShapeType == ShapeType.Point)
@@ -87,7 +89,15 @@ namespace Harlow
                     tempFeature.Bbox[3] = tempPoints[0].Y;
 
                     tempFeature.Coordinates.Add(tempPoints);
-                    _features[a] = tempFeature;
+
+                    int colNum = 0;
+                    foreach(string col in _Dbase.FieldNames)
+                    {
+                        tempFeature.Properties.Add(col.Trim(), _Dbase[a][colNum].Trim());
+                        colNum++;
+                    }
+
+                    _Features[a] = tempFeature;
                 }
             }
             else
@@ -145,7 +155,7 @@ namespace Harlow
                         tempFeature.Coordinates.Add(segmentPoints);
                     }
 
-                    _features[a] = tempFeature;
+                    _Features[a] = tempFeature;
                 }
             }
 
