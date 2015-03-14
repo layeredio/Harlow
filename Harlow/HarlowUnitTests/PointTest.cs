@@ -16,6 +16,8 @@ namespace HarlowUnitTests
             reader.LoadFile();
 
             Assert.AreEqual(reader.Features.Length, 38187);
+            Assert.AreEqual(reader.Features[42].Coordinates[0][0].X, -101.22071379999994);
+            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Y, 48.513074399064209);
         }
     }
 }
