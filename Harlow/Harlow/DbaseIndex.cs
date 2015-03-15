@@ -102,7 +102,6 @@ namespace Harlow
             checkByte = br.ReadByte(); // should be 0x0D (13)
 
             br.Close();
-            fs.Close();
         }
 
 

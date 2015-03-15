@@ -14,10 +14,6 @@ namespace Harlow
         {
         }
 
-        ~Dbase()
-        {
-        }
-
 
         /// <summary>
         /// Get a string array that represents a record, one string for
@@ -129,7 +125,6 @@ namespace Harlow
             }
 
             br.Close();
-            fs.Close();
 
             return buffer;
         }

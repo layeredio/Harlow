@@ -167,7 +167,6 @@ namespace Harlow
             }
 
             br.Close();
-            fs.Close();
         }
 
 
@@ -203,7 +202,6 @@ namespace Harlow
             }
 
             br.Close();
-            fs.Close();
 
             //File size is reported in the header as a big endian
             //16 bit word.
@@ -256,7 +254,6 @@ namespace Harlow
             }
 
             br.Close();
-            fs.Close();
         }
 
 
