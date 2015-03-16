@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Harlow;
+using Newtonsoft.Json;
 
 namespace HarlowUnitTests
 {
@@ -15,14 +17,17 @@ namespace HarlowUnitTests
             ShapeFileReader reader = new ShapeFileReader(polyFile);
             reader.LoadFile();
 
+            string json = JsonConvert.SerializeObject(reader.Features, Formatting.Indented);
+            File.WriteAllText("polygon.json", json);
+
             Assert.AreEqual(reader.Features.Length, 1516);
 
-            Assert.AreEqual(reader.Features[0].Geometry.Coordinates[0][0].X, -118.456008);
-            Assert.AreEqual(reader.Features[0].Geometry.Coordinates[0][0].Y, 34.284903);
-            Assert.AreEqual(reader.Features[42].Geometry.Coordinates[0][0].X, -118.30807);
-            Assert.AreEqual(reader.Features[42].Geometry.Coordinates[0][0].Y, 34.161224);
-            Assert.AreEqual(reader.Features[1515].Geometry.Coordinates[0][0].X, -122.060783);
-            Assert.AreEqual(reader.Features[1515].Geometry.Coordinates[0][0].Y, 37.05574);
+            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[0], -118.456008);
+            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[1], 34.284903);
+            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[0], -118.30807);
+            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[1], 34.161224);
+            Assert.AreEqual(reader.Features[1515].Coordinates[0][0].Value[0], -122.060783);
+            Assert.AreEqual(reader.Features[1515].Coordinates[0][0].Value[1], 37.05574);
 
             Assert.AreEqual(reader.Features[0].Properties.Count, 16);
 

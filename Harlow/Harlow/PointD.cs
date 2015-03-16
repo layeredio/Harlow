@@ -1,29 +1,33 @@
 using System;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Harlow
 {
-
-    public class PointD
+    [JsonArray]
+    public class PointD: IEnumerable<double>
     {
         public PointD()
         {
-
+            Value = new List<double> { 0.0, 0.0 };
         }
 
         public PointD(double xVal, double yVal)
         {
-            X = xVal;
-            Y = yVal;
+            Value = new List<double>() {xVal, yVal};
         }
 
-        public PointD(PointD P)
+        public List<double> Value;
+
+        public IEnumerator<double> GetEnumerator()
         {
-            X = P.X;
-            Y = P.Y;
+            return Value.GetEnumerator();
         }
 
-        public double X { get; set; }
-        public double Y { get; set; }
-
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Value.GetEnumerator();
+        }
     }
 }

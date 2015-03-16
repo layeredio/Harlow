@@ -10,18 +10,17 @@ namespace Harlow
         
         public VectorFeature(int numOfParts)
         {
-            Geometry = new VectorCoordinate(numOfParts);
+            Bbox = new double[4];
+            Coordinates = new List<PointD[]>(numOfParts);
             Properties = new Dictionary<string, string>(numOfParts);
-            Bbox = new double[2, 2];
         }
 
-
-        public string Type { get { return "feature"; } }
+        public string Type { get; set; }
 
         /// <summary>
         /// Bounding box for the feature (X,Y,X,Y)
         /// </summary>
-        public double[,] Bbox { get; set; }
+        public double[] Bbox { get; set; }
 
 
         /// <summary>
@@ -29,7 +28,7 @@ namespace Harlow
         /// First dimention is segment
         /// Second dimention are the points within that segment
         /// </summary>
-        public VectorCoordinate Geometry { get; set; }
+        public List<PointD[]> Coordinates { get; set; }
 
 
         /// <summary>
