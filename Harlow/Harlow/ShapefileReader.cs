@@ -55,7 +55,10 @@ namespace Harlow
             if (_Features == null)
                 LoadFile();
 
-            return JsonConvert.SerializeObject(_Features);
+            var settings = new JsonSerializerSettings();
+            settings.ContractResolver = new JsonResolver();
+
+            return JsonConvert.SerializeObject(_Features, settings);
         }
 
         /// <summary>

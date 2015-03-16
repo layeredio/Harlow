@@ -17,6 +17,7 @@ namespace HarlowUnitTests
             reader.LoadFile();
 
             string json = reader.FeaturesAsJson();
+            File.WriteAllText("point.json", json);
 
             Assert.AreEqual(json.Length, 8028178);
             Assert.AreEqual(reader.Features.Length, 38187);

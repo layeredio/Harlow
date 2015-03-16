@@ -17,6 +17,7 @@ namespace HarlowUnitTests
             reader.LoadFile();
 
             string json = reader.FeaturesAsJson();
+            File.WriteAllText("polygon.json", json);
 
             Assert.AreEqual(json.Length, 25309572);
             Assert.AreEqual(reader.Features.Length, 1516);

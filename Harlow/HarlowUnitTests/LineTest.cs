@@ -17,6 +17,7 @@ namespace HarlowUnitTests
             reader.LoadFile();
 
             string json = reader.FeaturesAsJson();
+            File.WriteAllText("line.json", json);
 
             Assert.AreEqual(json.Length, 2166881);
             Assert.AreEqual(reader.Features.Length, 4589);
