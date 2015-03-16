@@ -72,7 +72,7 @@ namespace Harlow
                 for (int a = 0; a < _FeatureCount; ++a)
                 {
                     // Point types don't have parts (segments) / one point per feature
-                    tempFeature = new VectorFeature(1);
+                    tempFeature = new VectorFeature(1, _ShapeType);
                     tempPoints = new PointD[1];
 
                     fs.Seek(_OffsetOfRecord[a], 0);
@@ -85,8 +85,6 @@ namespace Harlow
                     // So geoindexing works correctly
                     tempFeature.Bbox[0] = tempPoints[0].Value[0]; // X
                     tempFeature.Bbox[1] = tempPoints[0].Value[1]; // Y
-                    tempFeature.Bbox[2] = tempPoints[0].Value[0]; // X
-                    tempFeature.Bbox[3] = tempPoints[0].Value[1]; // Y
 
                     tempFeature.Coordinates.Add(tempPoints);
 
@@ -108,7 +106,7 @@ namespace Harlow
                     int segmentCount = br.ReadInt32();
 
                     // Read the number of parts (segments) and create a new VectorFeature
-                    tempFeature = new VectorFeature(segmentCount);
+                    tempFeature = new VectorFeature(segmentCount, _ShapeType);
 
                     fs.Seek(_OffsetOfRecord[a], 0);
 

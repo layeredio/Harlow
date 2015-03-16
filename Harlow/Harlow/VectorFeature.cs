@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 
 namespace Harlow
@@ -8,9 +9,17 @@ namespace Harlow
     public class VectorFeature
     {
         
-        public VectorFeature(int numOfParts)
+        public VectorFeature(int numOfParts, ShapeType shapeType)
         {
-            Bbox = new double[4];
+            if (shapeType == ShapeType.Point)
+            {
+                Bbox = new double[2];
+            }
+            else
+            {
+                Bbox = new double[4];
+            }
+
             Coordinates = new List<PointD[]>(numOfParts);
             Properties = new Dictionary<string, string>(numOfParts);
         }
