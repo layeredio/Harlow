@@ -2,7 +2,6 @@
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Harlow;
-using Newtonsoft.Json;
 
 namespace HarlowUnitTests
 {
@@ -17,9 +16,9 @@ namespace HarlowUnitTests
             ShapeFileReader reader = new ShapeFileReader(lineFile);
             reader.LoadFile();
 
-            string json = JsonConvert.SerializeObject(reader.Features, Formatting.Indented);
-            File.WriteAllText("lines.json", json);
+            string json = reader.FeaturesAsJson();
 
+            Assert.AreEqual(json.Length, 2166881);
             Assert.AreEqual(reader.Features.Length, 4589);
 
             Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[0], -122.480706);

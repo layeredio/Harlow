@@ -2,7 +2,6 @@
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Harlow;
-using Newtonsoft.Json;
 
 namespace HarlowUnitTests
 {
@@ -17,9 +16,9 @@ namespace HarlowUnitTests
             ShapeFileReader reader = new ShapeFileReader(polyFile);
             reader.LoadFile();
 
-            string json = JsonConvert.SerializeObject(reader.Features, Formatting.Indented);
-            File.WriteAllText("polygon.json", json);
+            string json = reader.FeaturesAsJson();
 
+            Assert.AreEqual(json.Length, 25309572);
             Assert.AreEqual(reader.Features.Length, 1516);
 
             Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[0], -118.456008);

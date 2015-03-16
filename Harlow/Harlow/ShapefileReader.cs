@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Harlow
 {
@@ -47,6 +48,14 @@ namespace Harlow
 
                 return _Features; 
             }
+        }
+
+        public string FeaturesAsJson()
+        {
+            if (_Features == null)
+                LoadFile();
+
+            return JsonConvert.SerializeObject(_Features);
         }
 
         /// <summary>
