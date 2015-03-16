@@ -83,10 +83,10 @@ namespace Harlow
                     tempPoints[0] = new PointD(br.ReadDouble(), br.ReadDouble());
 
                     // So geoindexing works correctly
-                    tempFeature.Bbox[0] = tempPoints[0].X;
-                    tempFeature.Bbox[1] = tempPoints[0].Y;
-                    tempFeature.Bbox[2] = tempPoints[0].X;
-                    tempFeature.Bbox[3] = tempPoints[0].Y;
+                    tempFeature.Bbox[0,0] = tempPoints[0].X;
+                    tempFeature.Bbox[0,1] = tempPoints[0].Y;
+                    tempFeature.Bbox[1,0] = tempPoints[0].X;
+                    tempFeature.Bbox[1,1] = tempPoints[0].Y;
 
                     tempFeature.Geometry.Coordinates.Add(tempPoints);
 
@@ -115,10 +115,10 @@ namespace Harlow
                     br.ReadInt32(); //Record number (not needed)
                     br.ReadInt32(); //Content length (not needed)
                     tempFeature.Geometry.Type = Enum.GetName(typeof(ShapeType), br.ReadInt32());
-                    tempFeature.Bbox[0] = br.ReadDouble();
-                    tempFeature.Bbox[1] = br.ReadDouble();
-                    tempFeature.Bbox[2] = br.ReadDouble();
-                    tempFeature.Bbox[3] = br.ReadDouble();
+                    tempFeature.Bbox[0,0] = br.ReadDouble();
+                    tempFeature.Bbox[0,1] = br.ReadDouble();
+                    tempFeature.Bbox[1,0] = br.ReadDouble();
+                    tempFeature.Bbox[1,1] = br.ReadDouble();
                     br.ReadInt32(); // Number of parts (segments) gotten earlier
                     tempPoints = new PointD[br.ReadInt32()]; // Number of points
 

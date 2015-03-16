@@ -12,7 +12,7 @@ namespace Harlow
         {
             Geometry = new VectorCoordinate(numOfParts);
             Properties = new Dictionary<string, string>(numOfParts);
-            Bbox = new double[4];
+            Bbox = new double[2, 2];
         }
 
 
@@ -21,7 +21,7 @@ namespace Harlow
         /// <summary>
         /// Bounding box for the feature (X,Y,X,Y)
         /// </summary>
-        public double[] Bbox { get; set; }
+        public double[,] Bbox { get; set; }
 
 
         /// <summary>
