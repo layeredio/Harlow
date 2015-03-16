@@ -17,12 +17,12 @@ namespace HarlowUnitTests
 
             Assert.AreEqual(reader.Features.Length, 38187);
 
-            Assert.AreEqual(reader.Features[0].Coordinates[0][0].X, -100.06096779999996);
-            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Y, 48.813056899065479);
-            Assert.AreEqual(reader.Features[42].Coordinates[0][0].X, -101.22071379999994);
-            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Y, 48.513074399064209);
-            Assert.AreEqual(reader.Features[38186].Coordinates[0][0].X, -149.22967529296875);
-            Assert.AreEqual(reader.Features[38186].Coordinates[0][0].Y, 61.541870116397909);
+            Assert.AreEqual(reader.Features[0].Geometry.Coordinates[0][0].X, -100.06096779999996);
+            Assert.AreEqual(reader.Features[0].Geometry.Coordinates[0][0].Y, 48.813056899065479);
+            Assert.AreEqual(reader.Features[42].Geometry.Coordinates[0][0].X, -101.22071379999994);
+            Assert.AreEqual(reader.Features[42].Geometry.Coordinates[0][0].Y, 48.513074399064209);
+            Assert.AreEqual(reader.Features[38186].Geometry.Coordinates[0][0].X, -149.22967529296875);
+            Assert.AreEqual(reader.Features[38186].Geometry.Coordinates[0][0].Y, 61.541870116397909);
 
             Assert.AreEqual(reader.Features[0].Properties.Count, 5);
             

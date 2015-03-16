@@ -79,7 +79,7 @@ namespace Harlow
 
                     br.ReadInt32(); //Record number (not needed)
                     br.ReadInt32(); //Content length (not needed)
-                    tempFeature.Type = (ShapeType)br.ReadInt32();
+                    tempFeature.Geometry.Type = Enum.GetName(typeof(ShapeType), br.ReadInt32());
                     tempPoints[0] = new PointD(br.ReadDouble(), br.ReadDouble());
 
                     // So geoindexing works correctly
@@ -88,7 +88,7 @@ namespace Harlow
                     tempFeature.Bbox[2] = tempPoints[0].X;
                     tempFeature.Bbox[3] = tempPoints[0].Y;
 
-                    tempFeature.Coordinates.Add(tempPoints);
+                    tempFeature.Geometry.Coordinates.Add(tempPoints);
 
                     int colNum = 0;
                     foreach(string col in _Dbase.FieldNames)
@@ -114,7 +114,7 @@ namespace Harlow
 
                     br.ReadInt32(); //Record number (not needed)
                     br.ReadInt32(); //Content length (not needed)
-                    tempFeature.Type = (ShapeType)br.ReadInt32();
+                    tempFeature.Geometry.Type = Enum.GetName(typeof(ShapeType), br.ReadInt32());
                     tempFeature.Bbox[0] = br.ReadDouble();
                     tempFeature.Bbox[1] = br.ReadDouble();
                     tempFeature.Bbox[2] = br.ReadDouble();
@@ -152,7 +152,7 @@ namespace Harlow
                             ++segmentPosition;
                         }
 
-                        tempFeature.Coordinates.Add(segmentPoints);
+                        tempFeature.Geometry.Coordinates.Add(segmentPoints);
                     }
 
                     int colNum = 0;
