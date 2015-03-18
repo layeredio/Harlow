@@ -39,6 +39,9 @@ namespace Harlow
             ReadIndex(filename); // .shx file
         }
 
+        /// <summary>
+        /// Native feature array as read from the Shapefile.
+        /// </summary>
         public VectorFeature[] Features
         {
             get
@@ -50,6 +53,10 @@ namespace Harlow
             }
         }
 
+        /// <summary>
+        /// Native feature array converted to an array of GeoJson objects.
+        /// </summary>
+        /// <returns></returns>
         public string FeaturesAsJson()
         {
             if (_Features == null)
@@ -186,7 +193,6 @@ namespace Harlow
         /// information that is needed to read the remainder of the
         /// .shx file and the .shp file.
         /// </summary>
-        /// @param filename The name of the Shapefile. (ie. "blah.shp")
         private void ParseHeader(string filename)
         {
             filename = filename.Remove(filename.Length - 4, 4);
@@ -232,7 +238,6 @@ namespace Harlow
         /// places the information into arrays (_OffsetOfRecord &
         /// _LengthOfRecord)
         /// </summary>
-        /// @param filename The name of the Shapefile. (ie. "blah.shp")
         private void ReadIndex(string filename)
         {
             filename = filename.Remove(filename.Length - 4, 4);
@@ -271,7 +276,6 @@ namespace Harlow
         ///Reverses the byte order of an integer (int32 only) 
         ///(big ->little or little ->big)
         ///</summary>
-        ///@param i The int32 integer to byte swap
         protected int SwitchByteOrder(int i)
         {
             byte[] buffer = new byte[4];

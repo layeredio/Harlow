@@ -24,6 +24,9 @@ namespace Harlow
             Properties = new Dictionary<string, string>(numOfParts);
         }
 
+        /// <summary>
+        /// GeoJson feature type
+        /// </summary>
         public string Type { get; set; }
 
         /// <summary>
