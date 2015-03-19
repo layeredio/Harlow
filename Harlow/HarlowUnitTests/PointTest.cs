@@ -31,25 +31,25 @@ namespace HarlowUnitTests
 
             Assert.AreEqual(reader.Features[0].Properties.Count, 5);
             
-            Assert.AreEqual(reader.Features[0].Properties["nam"], "Dunseith");
-            Assert.AreEqual(reader.Features[0].Properties["f_code"], "AL020");
+            Assert.AreEqual(reader.Features[0].Properties["nam"], "dunseith");
+            Assert.AreEqual(reader.Features[0].Properties["f_code"], "al020");
             Assert.AreEqual(reader.Features[0].Properties["pop"], "773");
             Assert.AreEqual(reader.Features[0].Properties["ypc"], "2010");
-            Assert.AreEqual(reader.Features[0].Properties["soc"], "USA");
+            Assert.AreEqual(reader.Features[0].Properties["soc"], "usa");
 
             Assert.AreEqual(reader.Features[42].Properties.Count, 5);
-            Assert.AreEqual(reader.Features[42].Properties["nam"], "Glenburn");
-            Assert.AreEqual(reader.Features[42].Properties["f_code"], "AL020");
+            Assert.AreEqual(reader.Features[42].Properties["nam"], "glenburn");
+            Assert.AreEqual(reader.Features[42].Properties["f_code"], "al020");
             Assert.AreEqual(reader.Features[42].Properties["pop"], "380");
             Assert.AreEqual(reader.Features[42].Properties["ypc"], "2010");
-            Assert.AreEqual(reader.Features[42].Properties["soc"], "USA");
+            Assert.AreEqual(reader.Features[42].Properties["soc"], "usa");
 
             Assert.AreEqual(reader.Features[38186].Properties.Count, 5);
-            Assert.AreEqual(reader.Features[38186].Properties["nam"], "Matanuska");
-            Assert.AreEqual(reader.Features[38186].Properties["f_code"], "AL020");
+            Assert.AreEqual(reader.Features[38186].Properties["nam"], "matanuska");
+            Assert.AreEqual(reader.Features[38186].Properties["f_code"], "al020");
             Assert.AreEqual(reader.Features[38186].Properties["pop"], "-999");
             Assert.AreEqual(reader.Features[38186].Properties["ypc"], "2010");
-            Assert.AreEqual(reader.Features[38186].Properties["soc"], "USA");
+            Assert.AreEqual(reader.Features[38186].Properties["soc"], "usa");
         }
     }
 }

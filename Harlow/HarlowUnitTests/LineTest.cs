@@ -31,20 +31,20 @@ namespace HarlowUnitTests
 
             Assert.AreEqual(reader.Features[0].Properties.Count, 4);
 
-            Assert.AreEqual(reader.Features[0].Properties["LINEARID"], "110498938555");
-            Assert.AreEqual(reader.Features[0].Properties["FULLNAME"], "N Van Horn Ln");
-            Assert.AreEqual(reader.Features[0].Properties["RTTYP"], "M");
-            Assert.AreEqual(reader.Features[0].Properties["MTFCC"], "S1400");
+            Assert.AreEqual(reader.Features[0].Properties["linearid"], "110498938555");
+            Assert.AreEqual(reader.Features[0].Properties["fullname"], "n van horn ln");
+            Assert.AreEqual(reader.Features[0].Properties["rttyp"], "m");
+            Assert.AreEqual(reader.Features[0].Properties["mtfcc"], "s1400");
 
-            Assert.AreEqual(reader.Features[42].Properties["LINEARID"], "110498935016");
-            Assert.AreEqual(reader.Features[42].Properties["FULLNAME"], "W Portal Ave");
-            Assert.AreEqual(reader.Features[42].Properties["RTTYP"], "M");
-            Assert.AreEqual(reader.Features[42].Properties["MTFCC"], "S1400");
+            Assert.AreEqual(reader.Features[42].Properties["linearid"], "110498935016");
+            Assert.AreEqual(reader.Features[42].Properties["fullname"], "w portal ave");
+            Assert.AreEqual(reader.Features[42].Properties["rttyp"], "m");
+            Assert.AreEqual(reader.Features[42].Properties["mtfcc"], "s1400");
 
-            Assert.AreEqual(reader.Features[4588].Properties["LINEARID"], "110498933806");
-            Assert.AreEqual(reader.Features[4588].Properties["FULLNAME"], "Avenue N");
-            Assert.AreEqual(reader.Features[4588].Properties["RTTYP"], "M");
-            Assert.AreEqual(reader.Features[4588].Properties["MTFCC"], "S1400");
+            Assert.AreEqual(reader.Features[4588].Properties["linearid"], "110498933806");
+            Assert.AreEqual(reader.Features[4588].Properties["fullname"], "avenue n");
+            Assert.AreEqual(reader.Features[4588].Properties["rttyp"], "m");
+            Assert.AreEqual(reader.Features[4588].Properties["mtfcc"], "s1400");
 
         }
     }

@@ -110,7 +110,7 @@ namespace Harlow
                     int colNum = 0;
                     foreach(string col in _Dbase.FieldNames)
                     {
-                        tempFeature.Properties.Add(col.Trim(), _Dbase[a][colNum].Trim());
+                        tempFeature.Properties.Add(col.Trim().ToLower(), _Dbase[a][colNum].Trim().ToLower());
                         colNum++;
                     }
 
@@ -175,7 +175,7 @@ namespace Harlow
                     int colNum = 0;
                     foreach (string col in _Dbase.FieldNames)
                     {
-                        tempFeature.Properties.Add(col.Trim(), _Dbase[a][colNum].Trim());
+                        tempFeature.Properties.Add(col.Trim().ToLower(), _Dbase[a][colNum].Trim().ToLower());
                         colNum++;
                     }
 

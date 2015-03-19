@@ -31,22 +31,22 @@ namespace HarlowUnitTests
 
             Assert.AreEqual(reader.Features[0].Properties.Count, 16);
 
-            Assert.AreEqual(reader.Features[42].Properties["STATEFP"], "06");
-            Assert.AreEqual(reader.Features[42].Properties["PLACEFP"], "30000");
-            Assert.AreEqual(reader.Features[42].Properties["PLACENS"], "02410597");
-            Assert.AreEqual(reader.Features[42].Properties["GEOID"], "0630000");
-            Assert.AreEqual(reader.Features[42].Properties["NAME"], "Glendale");
-            Assert.AreEqual(reader.Features[42].Properties["NAMELSAD"], "Glendale city");
-            Assert.AreEqual(reader.Features[42].Properties["LSAD"], "25");
-            Assert.AreEqual(reader.Features[42].Properties["CLASSFP"], "C1");
-            Assert.AreEqual(reader.Features[42].Properties["PCICBSA"], "Y");
-            Assert.AreEqual(reader.Features[42].Properties["PCINECTA"], "N");
-            Assert.AreEqual(reader.Features[42].Properties["MTFCC"], "G4110");
-            Assert.AreEqual(reader.Features[42].Properties["FUNCSTAT"], "A");
-            Assert.AreEqual(reader.Features[42].Properties["ALAND"], "78848571");
-            Assert.AreEqual(reader.Features[42].Properties["AWATER"], "337673");
-            Assert.AreEqual(reader.Features[42].Properties["INTPTLAT"], "+34.1813929");
-            Assert.AreEqual(reader.Features[42].Properties["INTPTLON"], "-118.2458301");
+            Assert.AreEqual(reader.Features[42].Properties["statefp"], "06");
+            Assert.AreEqual(reader.Features[42].Properties["placefp"], "30000");
+            Assert.AreEqual(reader.Features[42].Properties["placens"], "02410597");
+            Assert.AreEqual(reader.Features[42].Properties["geoid"], "0630000");
+            Assert.AreEqual(reader.Features[42].Properties["name"], "glendale");
+            Assert.AreEqual(reader.Features[42].Properties["namelsad"], "glendale city");
+            Assert.AreEqual(reader.Features[42].Properties["lsad"], "25");
+            Assert.AreEqual(reader.Features[42].Properties["classfp"], "c1");
+            Assert.AreEqual(reader.Features[42].Properties["pcicbsa"], "y");
+            Assert.AreEqual(reader.Features[42].Properties["pcinecta"], "n");
+            Assert.AreEqual(reader.Features[42].Properties["mtfcc"], "g4110");
+            Assert.AreEqual(reader.Features[42].Properties["funcstat"], "a");
+            Assert.AreEqual(reader.Features[42].Properties["aland"], "78848571");
+            Assert.AreEqual(reader.Features[42].Properties["awater"], "337673");
+            Assert.AreEqual(reader.Features[42].Properties["intptlat"], "+34.1813929");
+            Assert.AreEqual(reader.Features[42].Properties["intptlon"], "-118.2458301");
         }
     }
 }
