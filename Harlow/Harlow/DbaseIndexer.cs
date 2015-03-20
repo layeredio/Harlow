@@ -18,7 +18,7 @@ namespace Harlow
     /// This is an Abstract class and is not directly instantiated, it is 
     /// inherited by the Dbase class.
     /// </summary>
-    abstract public class DbaseIndex
+    abstract public class DbaseIndexer
     {
 
         protected string[] _FieldNames;
@@ -36,7 +36,7 @@ namespace Harlow
         private byte _UpdateDay;
         private ushort _HeaderLength;
 
-        public DbaseIndex(string filename)
+        public DbaseIndexer(string filename)
         {
             ReadHeader(filename);
         }

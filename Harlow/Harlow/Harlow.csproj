@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dbase.cs" />
-    <Compile Include="DbaseIndex.cs" />
+    <Compile Include="DbaseReader.cs" />
+    <Compile Include="DbaseIndexer.cs" />
     <Compile Include="JsonResolver.cs" />
     <Compile Include="PointD.cs" />
+    <Compile Include="ShapefileIndex.cs" />
     <Compile Include="ShapefileReader.cs" />
     <Compile Include="VectorFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

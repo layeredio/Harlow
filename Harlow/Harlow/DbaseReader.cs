@@ -6,10 +6,10 @@ namespace Harlow
     /// <summary>
     /// The class that provides access to the .dbf database file.
     /// </summary>
-    public class Dbase : DbaseIndex
+    public class DbaseReader : DbaseIndexer
     {
 
-        public Dbase(string filename)
+        public DbaseReader(string filename)
             : base(filename)
         {
         }
