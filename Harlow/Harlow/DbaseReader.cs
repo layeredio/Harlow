@@ -9,8 +9,7 @@ namespace Harlow
     public class DbaseReader : DbaseIndexer
     {
 
-        public DbaseReader(string filename)
-            : base(filename)
+        public DbaseReader(string filename) : base(filename)
         {
         }
 

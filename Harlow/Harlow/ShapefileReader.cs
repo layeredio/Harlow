@@ -14,14 +14,13 @@ namespace Harlow
         Multipoint = 8
     };
 
-    public class ShapeFileReader: ShapefileIndexer
+    public class ShapeFileReader : ShapefileIndexer
     {
         
         private VectorFeature[] _Features;
         private DbaseReader _Dbase;
 
-
-        public ShapeFileReader(string filename): base(filename)
+        public ShapeFileReader(string filename) : base(filename)
         {
             _Dbase = new DbaseReader(filename);
         }
@@ -71,7 +70,6 @@ namespace Harlow
             PointD[] segmentPoints;
 
             _Features = new VectorFeature[_FeatureCount];
-
 
             if (_ShapeType == ShapeType.Point)
             {

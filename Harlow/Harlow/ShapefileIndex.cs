@@ -69,8 +69,6 @@ namespace Harlow
             _BBox[3] = header_b[3];
         }
 
-
-
         /// <summary>
         /// Reads the record offset and length from the .shx index file and
         /// places the information into arrays (_OffsetOfRecord &
