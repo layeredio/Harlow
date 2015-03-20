@@ -47,7 +47,7 @@
     <Compile Include="DbaseIndexer.cs" />
     <Compile Include="JsonResolver.cs" />
     <Compile Include="PointD.cs" />
-    <Compile Include="ShapefileIndex.cs" />
+    <Compile Include="ShapefileIndexer.cs" />
     <Compile Include="ShapefileReader.cs" />
     <Compile Include="VectorFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
