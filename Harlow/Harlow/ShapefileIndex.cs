@@ -20,7 +20,6 @@ namespace Harlow
 
         public ShapefileIndexer(string filename)
         {
-            // TODO: Complete member initialization
             this._Filename = filename;
             _BBox = new double[4];
             ParseHeader(filename);// .shx file
