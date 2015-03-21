@@ -22,6 +22,9 @@ namespace HarlowUnitTests
             Assert.AreEqual(json.Length, 2166881);
             Assert.AreEqual(reader.Features.Length, 4589);
 
+            Assert.AreEqual(reader.FeatureAsJson(0).Length, 283);
+            Assert.AreEqual(reader.FeatureAsJson(4588).Length, 649);
+
             Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[0], -122.480706);
             Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[1], 37.792316);
             Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[0], -122.469023);

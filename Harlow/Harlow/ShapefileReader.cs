@@ -42,7 +42,7 @@ namespace Harlow
         /// <summary>
         /// Native feature array converted to an array of GeoJson objects.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A GeoJson array of all features.</returns>
         public string FeaturesAsJson()
         {
             if (_Features == null)
@@ -52,6 +52,22 @@ namespace Harlow
             settings.ContractResolver = new JsonResolver();
 
             return JsonConvert.SerializeObject(_Features, settings);
+        }
+
+        /// <summary>
+        /// Get a specific feature as Json.
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns>A single GeoJson feature.</returns>
+        public string FeatureAsJson(int ordinal)
+        {
+            if (_Features == null)
+                LoadFile();
+
+            var settings = new JsonSerializerSettings();
+            settings.ContractResolver = new JsonResolver();
+
+            return JsonConvert.SerializeObject(_Features[ordinal], settings);
         }
 
         /// <summary>
