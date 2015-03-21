@@ -2,15 +2,17 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <version>0.5.1</version>
     <title>$title$</title>
     <authors>johnvcoleman</authors>
     <owners>johnvcoleman</owners>
     <licenseUrl>https://github.com/johnvcoleman/Harlow/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/johnvcoleman/Harlow</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Initial realease.</releaseNotes>
+    <description>Harlow is a library used to read Esri style Shapefiles and output a simple GeoJson array of the features complete with the description of each feature found in the dbf file.</description>
+    <summary>A library that converts Shapefiles into simple GeoJson arrays.</summary>
+    <releaseNotes>Direct access to each feature as GeoJson, revised the visibility of some classes to clairify usage.
+    </releaseNotes>
     <copyright>Copyright 2015 John V Coleman</copyright>
     <tags>shp shapefile geojson</tags>
   </metadata>
