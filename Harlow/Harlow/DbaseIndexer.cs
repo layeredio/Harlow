@@ -4,16 +4,6 @@ using System.IO;
 namespace Harlow
 {
     /// <summary>
-    /// The possible types of fields that we'll come across in a dbf file.
-    /// All are handled the same way right now, as strings.
-    /// </summary>
-    internal enum FieldType : byte
-    {
-        C = 0x43, D = 0x44, F = 0x46, N = 0x4E, L = 0x4C,
-        c = 0x63, d = 0x64, f = 0x66, n = 0x6E, l = 0x6C,
-    };
-
-    /// <summary>
     /// Loads the relevant data structures by reading the header of the .dbf
     /// This is an Abstract class and is not directly instantiated, it is 
     /// inherited by the Dbase class.
@@ -22,7 +12,7 @@ namespace Harlow
     {
 
         protected string[] _FieldNames;
-        protected FieldType[] _FieldTypes;
+        protected DbFieldType[] _FieldTypes;
         protected byte[] _FieldLengths;
         protected uint _RecordCount;
         protected ushort _RecordLength;
@@ -69,7 +59,7 @@ namespace Harlow
                 _FieldCount = (uint)((_HeaderLength - 1) / 32) - 1;
 
                 _FieldNames = new string[_FieldCount];
-                _FieldTypes = new FieldType[_FieldCount];
+                _FieldTypes = new DbFieldType[_FieldCount];
                 _FieldLengths = new byte[_FieldCount];
 
                 for (int a = 0; a < _FieldCount; ++a)
@@ -87,7 +77,7 @@ namespace Harlow
                         _FieldNames[a] += (char)bbuffer;
                     }
 
-                    _FieldTypes[a] = (FieldType)br.ReadByte();
+                    _FieldTypes[a] = (DbFieldType)br.ReadByte();
                     br.ReadBytes(4); // field address in memory...??
                     _FieldLengths[a] = br.ReadByte();
                 }

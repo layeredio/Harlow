@@ -4,16 +4,6 @@ using Newtonsoft.Json;
 
 namespace Harlow
 {
-
-    public enum ShapeType
-    {
-        Null = 0,
-        Point = 1,
-        MultiLineString = 3,
-        MultiPolygon = 5,
-        Multipoint = 8
-    };
-
     public class ShapeFileReader : ShapefileIndexer
     {
         

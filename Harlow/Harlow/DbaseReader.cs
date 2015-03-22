@@ -61,8 +61,8 @@ namespace Harlow
 
                 switch (_FieldTypes[a])
                 {
-                    case FieldType.C:
-                    case FieldType.c:
+                    case DbFieldType.C:
+                    case DbFieldType.c:
                         //buffer[ a ] = new string( br.ReadChars( _FieldLengths[ a ] ) );
                         chars = new char[_FieldLengths[a]];
                         for (int i = 0; i < _FieldLengths[a]; i++)
@@ -72,8 +72,8 @@ namespace Harlow
                         buffer[a] = new string(chars);
                         break;
 
-                    case FieldType.D:
-                    case FieldType.d:
+                    case DbFieldType.D:
+                    case DbFieldType.d:
                         chars = new char[_FieldLengths[a]];
                         for (int i = 0; i < _FieldLengths[a]; i++)
                         {
@@ -82,8 +82,8 @@ namespace Harlow
                         buffer[a] = new string(chars);
                         break;
 
-                    case FieldType.F:
-                    case FieldType.f:
+                    case DbFieldType.F:
+                    case DbFieldType.f:
                         chars = new char[_FieldLengths[a]];
                         for (int i = 0; i < _FieldLengths[a]; i++)
                         {
@@ -92,8 +92,8 @@ namespace Harlow
                         buffer[a] = new string(chars);
                         break;
 
-                    case FieldType.L:
-                    case FieldType.l:
+                    case DbFieldType.L:
+                    case DbFieldType.l:
                         chars = new char[_FieldLengths[a]];
                         for (int i = 0; i < _FieldLengths[a]; i++)
                         {
@@ -102,8 +102,8 @@ namespace Harlow
                         buffer[a] = new string(chars);
                         break;
 
-                    case FieldType.N:
-                    case FieldType.n:
+                    case DbFieldType.N:
+                    case DbFieldType.n:
                         chars = new char[_FieldLengths[a]];
                         for (int i = 0; i < _FieldLengths[a]; i++)
                         {
