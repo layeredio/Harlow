@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>0.5.3</version>
+    <version>0.6.0</version>
     <title>$title$</title>
     <authors>johnvcoleman</authors>
     <owners>johnvcoleman</owners>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Harlow is a library used to read Esri style Shapefiles and output a simple GeoJson document of the features complete with the description of each feature found in the dbf file.</description>
     <summary>A library that converts Shapefiles into simple GeoJson documents.</summary>
-    <releaseNotes>Target .Net 4.5 for compatibility with Xamarin/Mono</releaseNotes>
+    <releaseNotes>Bugfixes for point and polygon GeoJson generation.  Everything validates against GeoJsonLint now.</releaseNotes>
     <copyright>Copyright 2015 John V Coleman</copyright>
     <tags>shp shapefile geojson gis</tags>
   </metadata>
