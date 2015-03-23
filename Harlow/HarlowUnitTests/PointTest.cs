@@ -19,40 +19,40 @@ namespace HarlowUnitTests
             string json = reader.FeaturesAsJson();
             File.WriteAllText("point.json", json);
 
-            Assert.AreEqual(json.Length, 8028178);
-            Assert.AreEqual(reader.Features.Length, 38187);
+            Assert.AreEqual(6673737, json.Length);
+            Assert.AreEqual(38187, reader.Features.Length);
 
-            Assert.AreEqual(reader.FeatureAsJson(0).Length, 209);
-            Assert.AreEqual(reader.FeatureAsJson(38186).Length, 211);
+            Assert.AreEqual(173, reader.FeatureAsJson(0).Length);
+            Assert.AreEqual(175, reader.FeatureAsJson(38186).Length);
 
-            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[0], -100.06096779999996);
-            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[1], 48.813056899065479);
-            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[0], -101.22071379999994);
-            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[1], 48.513074399064209);
-            Assert.AreEqual(reader.Features[38186].Coordinates[0][0].Value[0], -149.22967529296875);
-            Assert.AreEqual(reader.Features[38186].Coordinates[0][0].Value[1], 61.541870116397909);
+            Assert.AreEqual(-100.06096779999996, reader.Features[0].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(48.813056899065479, reader.Features[0].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-101.22071379999994, reader.Features[42].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(48.513074399064209, reader.Features[42].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-149.22967529296875, reader.Features[38186].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(61.541870116397909, reader.Features[38186].Coordinates[0][0].Value[1]);
 
-            Assert.AreEqual(reader.Features[0].Properties.Count, 5);
+            Assert.AreEqual(5, reader.Features[0].Properties.Count);
             
-            Assert.AreEqual(reader.Features[0].Properties["nam"], "dunseith");
-            Assert.AreEqual(reader.Features[0].Properties["f_code"], "al020");
-            Assert.AreEqual(reader.Features[0].Properties["pop"], "773");
-            Assert.AreEqual(reader.Features[0].Properties["ypc"], "2010");
-            Assert.AreEqual(reader.Features[0].Properties["soc"], "usa");
+            Assert.AreEqual("dunseith", reader.Features[0].Properties["nam"]);
+            Assert.AreEqual("al020", reader.Features[0].Properties["f_code"]);
+            Assert.AreEqual("773", reader.Features[0].Properties["pop"]);
+            Assert.AreEqual("2010", reader.Features[0].Properties["ypc"]);
+            Assert.AreEqual("usa", reader.Features[0].Properties["soc"]);
 
             Assert.AreEqual(reader.Features[42].Properties.Count, 5);
-            Assert.AreEqual(reader.Features[42].Properties["nam"], "glenburn");
-            Assert.AreEqual(reader.Features[42].Properties["f_code"], "al020");
-            Assert.AreEqual(reader.Features[42].Properties["pop"], "380");
-            Assert.AreEqual(reader.Features[42].Properties["ypc"], "2010");
-            Assert.AreEqual(reader.Features[42].Properties["soc"], "usa");
+            Assert.AreEqual("glenburn", reader.Features[42].Properties["nam"]);
+            Assert.AreEqual("al020", reader.Features[42].Properties["f_code"]);
+            Assert.AreEqual("380", reader.Features[42].Properties["pop"]);
+            Assert.AreEqual("2010", reader.Features[42].Properties["ypc"]);
+            Assert.AreEqual("usa", reader.Features[42].Properties["soc"]);
 
             Assert.AreEqual(reader.Features[38186].Properties.Count, 5);
-            Assert.AreEqual(reader.Features[38186].Properties["nam"], "matanuska");
-            Assert.AreEqual(reader.Features[38186].Properties["f_code"], "al020");
-            Assert.AreEqual(reader.Features[38186].Properties["pop"], "-999");
-            Assert.AreEqual(reader.Features[38186].Properties["ypc"], "2010");
-            Assert.AreEqual(reader.Features[38186].Properties["soc"], "usa");
+            Assert.AreEqual("matanuska", reader.Features[38186].Properties["nam"]);
+            Assert.AreEqual("al020", reader.Features[38186].Properties["f_code"]);
+            Assert.AreEqual("-999", reader.Features[38186].Properties["pop"]);
+            Assert.AreEqual("2010", reader.Features[38186].Properties["ypc"]);
+            Assert.AreEqual("usa", reader.Features[38186].Properties["soc"]);
         }
     }
 }

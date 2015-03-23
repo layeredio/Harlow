@@ -19,37 +19,37 @@ namespace HarlowUnitTests
             string json = reader.FeaturesAsJson();
             File.WriteAllText("polygon.json", json);
 
-            Assert.AreEqual(json.Length, 25309572);
-            Assert.AreEqual(reader.Features.Length, 1516);
+            Assert.AreEqual(25309572, json.Length);
+            Assert.AreEqual(1516, reader.Features.Length);
 
-            Assert.AreEqual(reader.FeatureAsJson(0).Length, 4785);
-            Assert.AreEqual(reader.FeatureAsJson(1515).Length, 13142);
+            Assert.AreEqual(4785, reader.FeatureAsJson(0).Length);
+            Assert.AreEqual(13142, reader.FeatureAsJson(1515).Length);
 
-            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[0], -118.456008);
-            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[1], 34.284903);
-            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[0], -118.30807);
-            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[1], 34.161224);
-            Assert.AreEqual(reader.Features[1515].Coordinates[0][0].Value[0], -122.060783);
-            Assert.AreEqual(reader.Features[1515].Coordinates[0][0].Value[1], 37.05574);
+            Assert.AreEqual(-118.456008, reader.Features[0].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(34.284903, reader.Features[0].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-118.30807, reader.Features[42].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(34.161224, reader.Features[42].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-122.060783, reader.Features[1515].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(37.05574, reader.Features[1515].Coordinates[0][0].Value[1]);
 
-            Assert.AreEqual(reader.Features[0].Properties.Count, 16);
+            Assert.AreEqual(16, reader.Features[0].Properties.Count);
 
-            Assert.AreEqual(reader.Features[42].Properties["statefp"], "06");
-            Assert.AreEqual(reader.Features[42].Properties["placefp"], "30000");
-            Assert.AreEqual(reader.Features[42].Properties["placens"], "02410597");
-            Assert.AreEqual(reader.Features[42].Properties["geoid"], "0630000");
-            Assert.AreEqual(reader.Features[42].Properties["name"], "glendale");
-            Assert.AreEqual(reader.Features[42].Properties["namelsad"], "glendale city");
-            Assert.AreEqual(reader.Features[42].Properties["lsad"], "25");
-            Assert.AreEqual(reader.Features[42].Properties["classfp"], "c1");
-            Assert.AreEqual(reader.Features[42].Properties["pcicbsa"], "y");
-            Assert.AreEqual(reader.Features[42].Properties["pcinecta"], "n");
-            Assert.AreEqual(reader.Features[42].Properties["mtfcc"], "g4110");
-            Assert.AreEqual(reader.Features[42].Properties["funcstat"], "a");
-            Assert.AreEqual(reader.Features[42].Properties["aland"], "78848571");
-            Assert.AreEqual(reader.Features[42].Properties["awater"], "337673");
-            Assert.AreEqual(reader.Features[42].Properties["intptlat"], "+34.1813929");
-            Assert.AreEqual(reader.Features[42].Properties["intptlon"], "-118.2458301");
+            Assert.AreEqual("06", reader.Features[42].Properties["statefp"]);
+            Assert.AreEqual("30000", reader.Features[42].Properties["placefp"]);
+            Assert.AreEqual("02410597", reader.Features[42].Properties["placens"]);
+            Assert.AreEqual("0630000", reader.Features[42].Properties["geoid"]);
+            Assert.AreEqual("glendale", reader.Features[42].Properties["name"]);
+            Assert.AreEqual("glendale city", reader.Features[42].Properties["namelsad"]);
+            Assert.AreEqual("25", reader.Features[42].Properties["lsad"]);
+            Assert.AreEqual("c1", reader.Features[42].Properties["classfp"]);
+            Assert.AreEqual("y", reader.Features[42].Properties["pcicbsa"]);
+            Assert.AreEqual("n", reader.Features[42].Properties["pcinecta"]);
+            Assert.AreEqual("g4110", reader.Features[42].Properties["mtfcc"]);
+            Assert.AreEqual("a", reader.Features[42].Properties["funcstat"]);
+            Assert.AreEqual("78848571", reader.Features[42].Properties["aland"]);
+            Assert.AreEqual("337673", reader.Features[42].Properties["awater"]);
+            Assert.AreEqual("+34.1813929", reader.Features[42].Properties["intptlat"]);
+            Assert.AreEqual("-118.2458301", reader.Features[42].Properties["intptlon"]);
         }
     }
 }

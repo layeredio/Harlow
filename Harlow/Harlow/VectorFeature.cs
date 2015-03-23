@@ -11,17 +11,13 @@ namespace Harlow
         
         public VectorFeature(int numOfParts, ShapeType shapeType)
         {
-            if (shapeType == ShapeType.Point)
-            {
-                Bbox = new double[2];
-            }
-            else
+            if (shapeType != ShapeType.Point)
             {
                 Bbox = new double[4];
             }
 
             Coordinates = new List<PointD[]>(numOfParts);
-            Properties = new Dictionary<string, string>(numOfParts);
+            Properties = new Dictionary<string, string>();
         }
 
         /// <summary>

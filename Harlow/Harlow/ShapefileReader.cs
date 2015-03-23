@@ -92,10 +92,6 @@ namespace Harlow
                     tempFeature.Type = Enum.GetName(typeof(ShapeType), br.ReadInt32());
                     tempPoints[0] = new PointD(br.ReadDouble(), br.ReadDouble());
 
-                    // So geoindexing works correctly
-                    tempFeature.Bbox[0] = tempPoints[0].Value[0]; // X
-                    tempFeature.Bbox[1] = tempPoints[0].Value[1]; // Y
-
                     tempFeature.Coordinates.Add(tempPoints);
 
                     int colNum = 0;

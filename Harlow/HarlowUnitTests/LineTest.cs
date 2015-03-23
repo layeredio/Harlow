@@ -19,35 +19,35 @@ namespace HarlowUnitTests
             string json = reader.FeaturesAsJson();
             File.WriteAllText("line.json", reader.FeatureAsJson(42));
 
-            Assert.AreEqual(json.Length, 2166881);
-            Assert.AreEqual(reader.Features.Length, 4589);
+            Assert.AreEqual(2166881, json.Length);
+            Assert.AreEqual(4589, reader.Features.Length);
 
-            Assert.AreEqual(reader.FeatureAsJson(0).Length, 283);
-            Assert.AreEqual(reader.FeatureAsJson(4588).Length, 649);
+            Assert.AreEqual(283, reader.FeatureAsJson(0).Length);
+            Assert.AreEqual(649, reader.FeatureAsJson(4588).Length);
 
-            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[0], -122.480706);
-            Assert.AreEqual(reader.Features[0].Coordinates[0][0].Value[1], 37.792316);
-            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[0], -122.469023);
-            Assert.AreEqual(reader.Features[42].Coordinates[0][0].Value[1], 37.737949);
-            Assert.AreEqual(reader.Features[4588].Coordinates[0][0].Value[0], -122.364304);
-            Assert.AreEqual(reader.Features[4588].Coordinates[0][0].Value[1], 37.819468);
+            Assert.AreEqual(-122.480706, reader.Features[0].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(37.792316, reader.Features[0].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-122.469023, reader.Features[42].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(37.737949, reader.Features[42].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-122.364304, reader.Features[4588].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(37.819468, reader.Features[4588].Coordinates[0][0].Value[1]);
 
-            Assert.AreEqual(reader.Features[0].Properties.Count, 4);
+            Assert.AreEqual(4, reader.Features[0].Properties.Count);
 
-            Assert.AreEqual(reader.Features[0].Properties["linearid"], "110498938555");
-            Assert.AreEqual(reader.Features[0].Properties["fullname"], "n van horn ln");
-            Assert.AreEqual(reader.Features[0].Properties["rttyp"], "m");
-            Assert.AreEqual(reader.Features[0].Properties["mtfcc"], "s1400");
+            Assert.AreEqual("110498938555", reader.Features[0].Properties["linearid"]);
+            Assert.AreEqual("n van horn ln", reader.Features[0].Properties["fullname"]);
+            Assert.AreEqual("m", reader.Features[0].Properties["rttyp"]);
+            Assert.AreEqual("s1400", reader.Features[0].Properties["mtfcc"]);
 
-            Assert.AreEqual(reader.Features[42].Properties["linearid"], "110498935016");
-            Assert.AreEqual(reader.Features[42].Properties["fullname"], "w portal ave");
-            Assert.AreEqual(reader.Features[42].Properties["rttyp"], "m");
-            Assert.AreEqual(reader.Features[42].Properties["mtfcc"], "s1400");
+            Assert.AreEqual("110498935016", reader.Features[42].Properties["linearid"]);
+            Assert.AreEqual("w portal ave", reader.Features[42].Properties["fullname"]);
+            Assert.AreEqual("m", reader.Features[42].Properties["rttyp"]);
+            Assert.AreEqual("s1400", reader.Features[42].Properties["mtfcc"]);
 
-            Assert.AreEqual(reader.Features[4588].Properties["linearid"], "110498933806");
-            Assert.AreEqual(reader.Features[4588].Properties["fullname"], "avenue n");
-            Assert.AreEqual(reader.Features[4588].Properties["rttyp"], "m");
-            Assert.AreEqual(reader.Features[4588].Properties["mtfcc"], "s1400");
+            Assert.AreEqual("110498933806", reader.Features[4588].Properties["linearid"]);
+            Assert.AreEqual("avenue n", reader.Features[4588].Properties["fullname"]);
+            Assert.AreEqual("m", reader.Features[4588].Properties["rttyp"]);
+            Assert.AreEqual("s1400", reader.Features[4588].Properties["mtfcc"]);
 
         }
     }
