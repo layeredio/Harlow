@@ -48,12 +48,14 @@
     <Compile Include="DbaseIndexer.cs" />
     <Compile Include="DbFieldType.cs" />
     <Compile Include="JsonResolver.cs" />
-    <Compile Include="PointD.cs" />
+    <Compile Include="PointA.cs" />
     <Compile Include="ShapefileIndexer.cs" />
     <Compile Include="ShapefileReader.cs" />
     <Compile Include="ShapeType.cs" />
     <Compile Include="VectorFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VectorPoint.cs" />
+    <Compile Include="VectorShape.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Harlow.nuspec" />

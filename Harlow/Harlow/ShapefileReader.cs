@@ -68,31 +68,29 @@ namespace Harlow
         {
             FileStream fs = new FileStream(_Filename, FileMode.Open);
             BinaryReader br = new BinaryReader(fs);
-            VectorFeature tempFeature;
+            //VectorFeature tempFeature;
             int[] segments;
             int segmentPosition;
             int pointsInSegment;
-            PointD[] tempPoints;
-            PointD[] segmentPoints;
-
-            _Features = new VectorFeature[_FeatureCount];
+            PointA[] segmentPoints;
 
             if (_ShapeType == ShapeType.Point)
             {
+                _Features = new VectorPoint[_FeatureCount];
+
                 for (int a = 0; a < _FeatureCount; ++a)
                 {
                     // Point types don't have parts (segments) / one point per feature
-                    tempFeature = new VectorFeature(1, _ShapeType);
-                    tempPoints = new PointD[1];
+                    VectorPoint tempFeature = new VectorPoint(1, _ShapeType);
+                    tempFeature.Coordinates = new double[2];
 
                     fs.Seek(_OffsetOfRecord[a], 0);
 
                     br.ReadInt32(); //Record number (not needed)
                     br.ReadInt32(); //Content length (not needed)
                     tempFeature.Type = Enum.GetName(typeof(ShapeType), br.ReadInt32());
-                    tempPoints[0] = new PointD(br.ReadDouble(), br.ReadDouble());
-
-                    tempFeature.Coordinates.Add(tempPoints);
+                    tempFeature.Coordinates[0] = br.ReadDouble();
+                    tempFeature.Coordinates[1] = br.ReadDouble();
 
                     int colNum = 0;
                     foreach(string col in _Dbase.FieldNames)
@@ -106,13 +104,16 @@ namespace Harlow
             }
             else
             {
+                _Features = new VectorShape[_FeatureCount];
+                PointA[] tempPoints;
+
                 for (int a = 0; a < _FeatureCount; ++a)
                 {
                     fs.Seek(_OffsetOfRecord[a] + 44, 0);
                     int segmentCount = br.ReadInt32();
 
                     // Read the number of parts (segments) and create a new VectorFeature
-                    tempFeature = new VectorFeature(segmentCount, _ShapeType);
+                    VectorShape tempFeature = new VectorShape(segmentCount, _ShapeType);
 
                     fs.Seek(_OffsetOfRecord[a], 0);
 
@@ -124,7 +125,7 @@ namespace Harlow
                     tempFeature.Bbox[2] = br.ReadDouble(); // X
                     tempFeature.Bbox[3] = br.ReadDouble(); // Y
                     br.ReadInt32(); // Number of parts (segments) gotten earlier
-                    tempPoints = new PointD[br.ReadInt32()]; // Number of points
+                    tempPoints = new PointA[br.ReadInt32()]; // Number of points
 
                     segments = new int[segmentCount + 1];
 
@@ -137,7 +138,7 @@ namespace Harlow
                     //Read in *ALL* of the points in the feature
                     for (int c = 0; c < tempPoints.Length; ++c)
                     {
-                        tempPoints[c] = new PointD(br.ReadDouble(), br.ReadDouble());
+                        tempPoints[c] = new PointA(br.ReadDouble(), br.ReadDouble());
                     }
 
                     //Add in an ending point for the inner loop that follows (e) 
@@ -147,7 +148,7 @@ namespace Harlow
                     for (int d = 0; d < segmentCount; ++d)
                     {
                         pointsInSegment = segments[d + 1] - segments[d];
-                        segmentPoints = new PointD[pointsInSegment];
+                        segmentPoints = new PointA[pointsInSegment];
                         segmentPosition = 0;
 
                         for (int e = segments[d]; e < segments[d + 1]; ++e)

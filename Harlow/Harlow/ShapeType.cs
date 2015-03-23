@@ -17,7 +17,7 @@ namespace Harlow
         Null = 0,
         Point = 1,
         MultiLineString = 3,
-        MultiPolygon = 5,
+        Polygon = 5,
         Multipoint = 8
     };
 }

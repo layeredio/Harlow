@@ -6,14 +6,14 @@ using System.Collections;
 namespace Harlow
 {
     [JsonArray]
-    public class PointD: IEnumerable<double>
+    public class PointA: IEnumerable<double>
     {
-        public PointD()
+        public PointA()
         {
             Value = new List<double> { 0.0, 0.0 };
         }
 
-        public PointD(double xVal, double yVal)
+        public PointA(double xVal, double yVal)
         {
             Value = new List<double>() {xVal, yVal};
         }

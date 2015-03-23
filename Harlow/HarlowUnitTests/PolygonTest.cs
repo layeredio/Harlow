@@ -17,20 +17,22 @@ namespace HarlowUnitTests
             reader.LoadFile();
 
             string json = reader.FeaturesAsJson();
-            File.WriteAllText("polygon.json", json);
+            File.WriteAllText("polygon.json", reader.FeatureAsJson(42));
 
-            Assert.AreEqual(25309572, json.Length);
+            Assert.AreEqual(25301992, json.Length);
             Assert.AreEqual(1516, reader.Features.Length);
 
-            Assert.AreEqual(4785, reader.FeatureAsJson(0).Length);
-            Assert.AreEqual(13142, reader.FeatureAsJson(1515).Length);
+            Assert.AreEqual(4780, reader.FeatureAsJson(0).Length);
+            Assert.AreEqual(13137, reader.FeatureAsJson(1515).Length);
 
-            Assert.AreEqual(-118.456008, reader.Features[0].Coordinates[0][0].Value[0]);
-            Assert.AreEqual(34.284903, reader.Features[0].Coordinates[0][0].Value[1]);
-            Assert.AreEqual(-118.30807, reader.Features[42].Coordinates[0][0].Value[0]);
-            Assert.AreEqual(34.161224, reader.Features[42].Coordinates[0][0].Value[1]);
-            Assert.AreEqual(-122.060783, reader.Features[1515].Coordinates[0][0].Value[0]);
-            Assert.AreEqual(37.05574, reader.Features[1515].Coordinates[0][0].Value[1]);
+            VectorShape[] features = reader.Features as VectorShape[];
+
+            Assert.AreEqual(-118.456008, features[0].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(34.284903, features[0].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-118.30807, features[42].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(34.161224, features[42].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-122.060783, features[1515].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(37.05574, features[1515].Coordinates[0][0].Value[1]);
 
             Assert.AreEqual(16, reader.Features[0].Properties.Count);
 

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Harlow
 {
     
-    public class VectorFeature
+    public abstract class VectorFeature
     {
         
         public VectorFeature(int numOfParts, ShapeType shapeType)
@@ -16,7 +16,6 @@ namespace Harlow
                 Bbox = new double[4];
             }
 
-            Coordinates = new List<PointD[]>(numOfParts);
             Properties = new Dictionary<string, string>();
         }
 
@@ -30,14 +29,10 @@ namespace Harlow
         /// </summary>
         public double[] Bbox { get; set; }
 
-
         /// <summary>
-        /// All of the points that make up the vector feature.
-        /// First dimention is segment
-        /// Second dimention are the points within that segment
+        /// Just a placeholder
         /// </summary>
-        public List<PointD[]> Coordinates { get; set; }
-
+        public object Coordinates { get; set; }
 
         /// <summary>
         /// The textual descriptors of this feature from the dbf file.

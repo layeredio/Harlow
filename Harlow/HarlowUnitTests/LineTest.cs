@@ -25,12 +25,14 @@ namespace HarlowUnitTests
             Assert.AreEqual(283, reader.FeatureAsJson(0).Length);
             Assert.AreEqual(649, reader.FeatureAsJson(4588).Length);
 
-            Assert.AreEqual(-122.480706, reader.Features[0].Coordinates[0][0].Value[0]);
-            Assert.AreEqual(37.792316, reader.Features[0].Coordinates[0][0].Value[1]);
-            Assert.AreEqual(-122.469023, reader.Features[42].Coordinates[0][0].Value[0]);
-            Assert.AreEqual(37.737949, reader.Features[42].Coordinates[0][0].Value[1]);
-            Assert.AreEqual(-122.364304, reader.Features[4588].Coordinates[0][0].Value[0]);
-            Assert.AreEqual(37.819468, reader.Features[4588].Coordinates[0][0].Value[1]);
+            VectorShape[] features = reader.Features as VectorShape[];
+
+            Assert.AreEqual(-122.480706, features[0].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(37.792316, features[0].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-122.469023, features[42].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(37.737949, features[42].Coordinates[0][0].Value[1]);
+            Assert.AreEqual(-122.364304, features[4588].Coordinates[0][0].Value[0]);
+            Assert.AreEqual(37.819468, features[4588].Coordinates[0][0].Value[1]);
 
             Assert.AreEqual(4, reader.Features[0].Properties.Count);
 
