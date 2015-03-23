@@ -2,18 +2,17 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>0.5.2</version>
+    <version>0.5.3</version>
     <title>$title$</title>
     <authors>johnvcoleman</authors>
     <owners>johnvcoleman</owners>
     <licenseUrl>https://raw.githubusercontent.com/johnvcoleman/Harlow/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/johnvcoleman/Harlow</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Harlow is a library used to read Esri style Shapefiles and output a simple GeoJson array of the features complete with the description of each feature found in the dbf file.</description>
-    <summary>A library that converts Shapefiles into simple GeoJson arrays.</summary>
-    <releaseNotes>Direct access to each feature as GeoJson, revised the visibility of some classes to clairify usage.
-    </releaseNotes>
+    <description>Harlow is a library used to read Esri style Shapefiles and output a simple GeoJson document of the features complete with the description of each feature found in the dbf file.</description>
+    <summary>A library that converts Shapefiles into simple GeoJson documents.</summary>
+    <releaseNotes>Target .Net 4.5 for compatibility with Xamarin/Mono</releaseNotes>
     <copyright>Copyright 2015 John V Coleman</copyright>
-    <tags>shp shapefile geojson</tags>
+    <tags>shp shapefile geojson gis</tags>
   </metadata>
 </package>
