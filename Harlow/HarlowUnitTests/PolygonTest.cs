@@ -8,7 +8,7 @@ namespace HarlowUnitTests
     [TestClass]
     public class PolygonTest
     {
-        string polyFile = @"..\..\Shapefiles\Polygon\tl_2014_06_place.shp";
+        string polyFile = String.Format("..{0}..{0}Shapefiles{0}Polygon{0}tl_2014_06_place.shp", Path.DirectorySeparatorChar);
 
         [TestMethod]
         public void Tiger_US_PlaceBoundaries()

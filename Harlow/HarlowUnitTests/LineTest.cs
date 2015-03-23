@@ -8,7 +8,7 @@ namespace HarlowUnitTests
     [TestClass]
     public class LineTest
     {
-        string lineFile = @"..\..\Shapefiles\Line\tl_2014_06075_roads.shp";
+        string lineFile = String.Format("..{0}..{0}Shapefiles{0}Line{0}tl_2014_06075_roads.shp", Path.DirectorySeparatorChar);
 
         [TestMethod]
         public void Tiger_CA_SanFran_Roads()

@@ -8,7 +8,7 @@ namespace HarlowUnitTests
     [TestClass]
     public class PointTest
     {
-        string pointFile = @"..\..\Shapefiles\Point\builtupp_usa.shp";
+        string pointFile = String.Format("..{0}..{0}Shapefiles{0}Point{0}builtupp_usa.shp", Path.DirectorySeparatorChar);
         
         [TestMethod]
         public void USGS_CitiesAndTowns()

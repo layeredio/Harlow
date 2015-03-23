@@ -6,7 +6,7 @@
     <title>$title$</title>
     <authors>johnvcoleman</authors>
     <owners>johnvcoleman</owners>
-    <licenseUrl>https://github.com/johnvcoleman/Harlow/blob/master/LICENSE</licenseUrl>
+    <licenseUrl>https://raw.githubusercontent.com/johnvcoleman/Harlow/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/johnvcoleman/Harlow</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Harlow is a library used to read Esri style Shapefiles and output a simple GeoJson array of the features complete with the description of each feature found in the dbf file.</description>
