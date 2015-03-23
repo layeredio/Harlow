@@ -38,7 +38,7 @@ namespace Harlow
             if (_Features == null)
                 LoadFile();
 
-            var settings = new JsonSerializerSettings();
+            var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
             settings.ContractResolver = new JsonResolver();
 
             return JsonConvert.SerializeObject(_Features, settings);
@@ -54,7 +54,7 @@ namespace Harlow
             if (_Features == null)
                 LoadFile();
 
-            var settings = new JsonSerializerSettings();
+            var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
             settings.ContractResolver = new JsonResolver();
 
             return JsonConvert.SerializeObject(_Features[ordinal], settings);

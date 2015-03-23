@@ -19,11 +19,11 @@ namespace HarlowUnitTests
             string json = reader.FeaturesAsJson();
             File.WriteAllText("point.json", json);
 
-            Assert.AreEqual(6673737, json.Length);
+            Assert.AreEqual(6215493, json.Length);
             Assert.AreEqual(38187, reader.Features.Length);
 
-            Assert.AreEqual(173, reader.FeatureAsJson(0).Length);
-            Assert.AreEqual(175, reader.FeatureAsJson(38186).Length);
+            Assert.AreEqual(161, reader.FeatureAsJson(0).Length);
+            Assert.AreEqual(163, reader.FeatureAsJson(38186).Length);
 
             Assert.AreEqual(-100.06096779999996, reader.Features[0].Coordinates[0][0].Value[0]);
             Assert.AreEqual(48.813056899065479, reader.Features[0].Coordinates[0][0].Value[1]);
