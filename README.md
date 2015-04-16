@@ -1,4 +1,7 @@
 # Harlow
+
+[![Build status](https://ci.appveyor.com/api/projects/status/qtbhq37y7sjrjn1n/branch/master?svg=true)](https://ci.appveyor.com/project/JohnColeman/harlow/branch/master)
+
 A library for converting ESRI Shapefiles into simple GeoJson documents.
 
 Using the library is pretty straight forward, check the unit test project or use the gist below as a guide:
