@@ -11,11 +11,6 @@ namespace Harlow
         public VectorPoint(int numOfPoints, ShapeType shapeType) :
             base (numOfPoints, shapeType)
         {
-            if (shapeType != ShapeType.Point)
-            {
-                Bbox = new double[4];
-            }
-
             this.Coordinates = new double[numOfPoints];
             this.Properties = new Dictionary<string, string>();
         }
