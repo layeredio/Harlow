@@ -36,7 +36,7 @@ namespace Harlow
             filename = filename.Remove(filename.Length - 4, 4);
             filename += ".shx";
 
-            FileStream fs = new FileStream(filename, FileMode.Open);
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
 
             int i;
@@ -79,7 +79,7 @@ namespace Harlow
             filename = filename.Remove(filename.Length - 4, 4);
             filename += ".shx";
 
-            FileStream fs = new FileStream(filename, FileMode.Open);
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
             int ibuffer;
 
