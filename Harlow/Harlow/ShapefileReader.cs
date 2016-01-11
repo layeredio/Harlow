@@ -66,7 +66,7 @@ namespace Harlow
         /// </summary>
         public void LoadFile()
         {
-            FileStream fs = new FileStream(_Filename, FileMode.Open);
+            FileStream fs = new FileStream(_Filename, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
             //VectorFeature tempFeature;
             int[] segments;

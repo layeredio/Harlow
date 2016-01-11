@@ -38,7 +38,7 @@ namespace Harlow
             filename += ".dbf";
             _Filename = filename;
 
-            FileStream fs = new FileStream(filename, FileMode.Open);
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
             byte checkByte;
             byte bbuffer;
