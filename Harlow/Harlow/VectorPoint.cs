@@ -8,11 +8,13 @@ namespace Harlow
 {
     public class VectorPoint : VectorFeature
     {
-        public VectorPoint(int numOfPoints, ShapeType shapeType) :
-            base (numOfPoints, shapeType)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="numOfPoints"></param>
+        public VectorPoint(int numOfPoints) : base (ShapeType.Point)
         {
             this.Coordinates = new double[numOfPoints];
-            this.Properties = new Dictionary<string, string>();
         }
 
         /// <summary>

@@ -81,7 +81,7 @@ namespace Harlow
                 for (int a = 0; a < _FeatureCount; ++a)
                 {
                     // Point types don't have parts (segments) / one point per feature
-                    VectorPoint tempFeature = new VectorPoint(1, _ShapeType);
+                    VectorPoint tempFeature = new VectorPoint(1);
                     tempFeature.Coordinates = new double[2];
 
                     fs.Seek(_OffsetOfRecord[a], 0);

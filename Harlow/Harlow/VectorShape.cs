@@ -8,16 +8,14 @@ namespace Harlow
 {
     public class VectorShape : VectorFeature
     {
-        public VectorShape(int numOfParts, ShapeType shapeType) :
-            base (numOfParts, shapeType)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="numOfParts"></param>
+		/// <param name="shapeType"></param>
+        public VectorShape(int numOfParts, ShapeType shapeType) : base (shapeType)
         {
-            if (shapeType != ShapeType.Point)
-            {
-                Bbox = new double[4];
-            }
-
             this.Coordinates = new List<PointA[]>(numOfParts);
-            this.Properties = new Dictionary<string, string>();
         }
 
         /// <summary>

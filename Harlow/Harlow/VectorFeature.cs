@@ -8,8 +8,11 @@ namespace Harlow
     
     public abstract class VectorFeature
     {
-        
-        public VectorFeature(int numOfParts, ShapeType shapeType)
+		/// <summary>
+		/// Defailt constructor for the VectorFeature abstract class
+		/// </summary>
+		/// <param name="shapeType"></param>
+        public VectorFeature(ShapeType shapeType)
         {
             if (shapeType != ShapeType.Point)
             {
@@ -32,7 +35,7 @@ namespace Harlow
         /// <summary>
         /// Just a placeholder
         /// </summary>
-        public object Coordinates { get; set; }
+        public virtual object Coordinates { get; set; }
 
         /// <summary>
         /// The textual descriptors of this feature from the dbf file.
