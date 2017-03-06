@@ -7,7 +7,7 @@ namespace Harlow
 {
     [JsonArray]
     public class PointA: IEnumerable<double>
-    {
+    { 
         public List<double> Value;
 
         public PointA(double xVal, double yVal)
