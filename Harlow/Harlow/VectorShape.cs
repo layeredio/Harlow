@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Harlow
 {
     public class VectorShape : VectorFeature
-    {
+    { 
 		/// <summary>
 		/// 
 		/// </summary>
