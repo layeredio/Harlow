@@ -30,12 +30,13 @@ namespace HarlowUnitTests {
 		}
 
 		[TestMethod()]
-		public void GetEnumeratorTest() {
+		public void PointA_GetEnumeratorTest() {
 			var p = new PointA(123.456, 789.012);
 			
 			Assert.IsInstanceOfType(p.GetEnumerator(), typeof(IEnumerator<double>));
 			
 			IEnumerator<double> pe = p.GetEnumerator();
+			pe.MoveNext();
 			Assert.AreEqual(123.456, pe.Current);
 			pe.MoveNext();
 			Assert.AreEqual(789.012, pe.Current);
