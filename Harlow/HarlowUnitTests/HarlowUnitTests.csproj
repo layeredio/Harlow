@@ -69,6 +69,7 @@
     <Compile Include="LineTest.cs" />
     <Compile Include="PolygonTest.cs" />
     <Compile Include="VectorFeatureTest.cs" />
+    <Compile Include="VectorPointAndShapeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
