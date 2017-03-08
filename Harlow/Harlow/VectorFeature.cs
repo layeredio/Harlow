@@ -20,6 +20,7 @@ namespace Harlow
             }
 
             Properties = new Dictionary<string, string>();
+			Type = shapeType.ToString();;
         }
 
         /// <summary>
