@@ -26,33 +26,51 @@ namespace Harlow
         private byte _UpdateDay;
         private ushort _HeaderLength;
 
+		protected BinaryReader _br;
+		protected FileStream _fs;
+
         public DbaseIndexer(string filename)
         {
-            ReadHeader(filename);
+			SetSourcFile(filename);
+            ReadHeader();
         }
 
-        private void ReadHeader(string filename)
+		~DbaseIndexer() {
+			if(_br != null)
+				_br.Dispose();
+			
+			if(_fs != null)
+				_fs.Dispose();
+		}
+
+		protected void OpenBinaryReader() {
+			_fs = new FileStream(_Filename, FileMode.Open, FileAccess.Read);
+			_br = new BinaryReader(_fs);
+		}
+
+		private void SetSourcFile(string srcFileName) {
+		    srcFileName = srcFileName.Remove(srcFileName.Length - 4, 4);
+            srcFileName += ".dbf";
+            _Filename = srcFileName;
+		}
+
+        private void ReadHeader()
         {
-
-            filename = filename.Remove(filename.Length - 4, 4);
-            filename += ".dbf";
-            _Filename = filename;
-
-            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
+			OpenBinaryReader();
+        
             byte checkByte;
             byte bbuffer;
 
-            _DbType = br.ReadByte();
+            _DbType = _br.ReadByte();
 
             if (_DbType == 0x03)
             {
-                _UpdateYear = br.ReadByte();
-                _UpdateMonth = br.ReadByte();
-                _UpdateDay = br.ReadByte();
-                _RecordCount = br.ReadUInt32();
-                _HeaderLength = br.ReadUInt16();
-                _RecordLength = br.ReadUInt16();
+                _UpdateYear = _br.ReadByte();
+                _UpdateMonth = _br.ReadByte();
+                _UpdateDay = _br.ReadByte();
+                _RecordCount = _br.ReadUInt32();
+                _HeaderLength = _br.ReadUInt16();
+                _RecordLength = _br.ReadUInt16();
 
                 // Header size minus terminator char divided by length of
                 // a field descriptor minus 1 to adjust for the file descriptor.
@@ -64,22 +82,22 @@ namespace Harlow
 
                 for (int a = 0; a < _FieldCount; ++a)
                 {
-                    fs.Seek(32 + (32 * a), 0);
+                    _fs.Seek(32 + (32 * a), 0);
 
                     // Has to be read as byte and converted to char
                     // because a 0x9e is appended to the end of some
                     // field descriptors and it throws off br.ReadChars( x )
                     for (int b = 0; b < 11; ++b)
                     {
-                        bbuffer = br.ReadByte();
+                        bbuffer = _br.ReadByte();
                         if (bbuffer == 0) { continue; } // ignore nulls
                         
                         _FieldNames[a] += (char)bbuffer;
                     }
 
-                    _FieldTypes[a] = (DbFieldType)br.ReadByte();
-                    br.ReadBytes(4); // field address in memory...??
-                    _FieldLengths[a] = br.ReadByte();
+                    _FieldTypes[a] = (DbFieldType)_br.ReadByte();
+                    _br.ReadBytes(4); // field address in memory...??
+                    _FieldLengths[a] = _br.ReadByte();
                 }
             }
 
@@ -87,11 +105,11 @@ namespace Harlow
             // descriptor + 1 byte for the header record terminator (0x0D)
             _RecordStart = (_FieldCount * 32) + 32 + 1;
 
-            fs.Seek(_RecordStart - 1, 0);
+            _fs.Seek(_RecordStart - 1, 0);
 
-            checkByte = br.ReadByte(); // should be 0x0D (13)
+            checkByte = _br.ReadByte(); // should be 0x0D (13)
 
-            br.Close();
+            _br.Close();
         }
 
 

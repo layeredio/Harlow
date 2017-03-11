@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace Harlow
 {
@@ -9,10 +10,11 @@ namespace Harlow
     internal class DbaseReader : DbaseIndexer
     {
 
-        public DbaseReader(string filename) : base(filename)
-        {
-        }
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="filename"></param>
+        public DbaseReader(string filename) : base(filename) {}
 
         /// <summary>
         /// Get a string array that represents a record, one string for
@@ -20,112 +22,70 @@ namespace Harlow
         /// </summary>
         /// @return A string array that represents one record.
         public string[] this[int index]
-        {
-            get
-            {
+		{
+            get {
                 return GetRecord(index);
             }
         }
 
+		/// <summary>
+		/// 
+		/// </summary>
         public void Dispose()
-        {
-        }
+		{
+		}
 
-        /// <summary>
-        /// Get a whole record from the db file.  TODO: handle value types
-        /// other than characters correctly.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        private string[] GetRecord(int index)
-        {
-            FileStream fs = new FileStream(_Filename, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
+		/// <summary>
+		/// Get a whole record from the db file.  TODO: handle value types
+		/// other than characters correctly.
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
+		private string[] GetRecord(int index)
+		{
+			OpenBinaryReader();
 
-            string[] buffer = new string[_FieldCount];
+			string[] buffer = new string[_FieldCount];
 
-            if (index < _RecordCount)
-            {
-                fs.Seek(_RecordStart + (index * _RecordLength), 0);
-            }
-            else
-            {
-                return null;
-            }
+			if (index < _RecordCount)
+			{
+				_fs.Seek(_RecordStart + (index * _RecordLength), 0);
+			}
+			else
+			{
+				return null;
+			}
 
-            br.ReadByte();  // delete flag
+			_br.ReadByte();  // delete flag
 
-            for (int a = 0; a < _FieldCount; ++a)
-            {
-                char[] chars;
+			for (int a = 0; a < _FieldCount; ++a)
+			{
+			
+				switch (_FieldTypes[a])
+				{
+					case DbFieldType.C:
+					case DbFieldType.c:
+					case DbFieldType.D:
+					case DbFieldType.d:
+					case DbFieldType.F:
+					case DbFieldType.f:
+					case DbFieldType.L:
+					case DbFieldType.l:
+					case DbFieldType.N:
+					case DbFieldType.n:
+					default:
+						buffer[a] = ReadStringFromStream(_br, _FieldLengths[a]);
+						break;
+				}
+			}
 
-                switch (_FieldTypes[a])
-                {
-                    case DbFieldType.C:
-                    case DbFieldType.c:
-                        //buffer[ a ] = new string( br.ReadChars( _FieldLengths[ a ] ) );
-                        chars = new char[_FieldLengths[a]];
-                        for (int i = 0; i < _FieldLengths[a]; i++)
-                        {
-                            chars[i] = (char)br.ReadByte();
-                        }
-                        buffer[a] = new string(chars);
-                        break;
+			_br.Close();
 
-                    case DbFieldType.D:
-                    case DbFieldType.d:
-                        chars = new char[_FieldLengths[a]];
-                        for (int i = 0; i < _FieldLengths[a]; i++)
-                        {
-                            chars[i] = (char)br.ReadByte();
-                        }
-                        buffer[a] = new string(chars);
-                        break;
+			return buffer;
+		}
 
-                    case DbFieldType.F:
-                    case DbFieldType.f:
-                        chars = new char[_FieldLengths[a]];
-                        for (int i = 0; i < _FieldLengths[a]; i++)
-                        {
-                            chars[i] = (char)br.ReadByte();
-                        }
-                        buffer[a] = new string(chars);
-                        break;
-
-                    case DbFieldType.L:
-                    case DbFieldType.l:
-                        chars = new char[_FieldLengths[a]];
-                        for (int i = 0; i < _FieldLengths[a]; i++)
-                        {
-                            chars[i] = (char)br.ReadByte();
-                        }
-                        buffer[a] = new string(chars);
-                        break;
-
-                    case DbFieldType.N:
-                    case DbFieldType.n:
-                        chars = new char[_FieldLengths[a]];
-                        for (int i = 0; i < _FieldLengths[a]; i++)
-                        {
-                            chars[i] = (char)br.ReadByte();
-                        }
-                        buffer[a] = new string(chars);
-                        break;
-
-                    default:
-                        chars = new char[_FieldLengths[a]];
-                        for (int i = 0; i < _FieldLengths[a]; i++)
-                        {
-                            chars[i] = (char)br.ReadByte();
-                        }
-                        buffer[a] = new string(chars);
-                        break;
-                }
-            }
-
-            br.Close();
-
-            return buffer;
-        }
+		private string ReadStringFromStream(BinaryReader br, int bufferLength) {
+			return new string(br.ReadChars(bufferLength));
+		}
     }
 }
