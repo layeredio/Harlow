@@ -10,7 +10,6 @@ namespace Harlow
     /// </summary>
     abstract internal class DbaseIndexer
     {
-
         protected string[] _FieldNames;
         protected DbFieldType[] _FieldTypes;
         protected byte[] _FieldLengths;
@@ -33,21 +32,28 @@ namespace Harlow
         {
 			SetSourcFile(filename);
             ReadHeader();
+
         }
 
 		~DbaseIndexer() {
+			DisposeFiles();
+		}
+
+		protected void OpenBinaryReader() {
+			DisposeFiles();
+			_fs = new FileStream(_Filename, FileMode.Open, FileAccess.Read);
+			_br = new BinaryReader(_fs);
+		}
+
+		private void DisposeFiles()
+		{
 			if(_br != null)
 				_br.Dispose();
 			
 			if(_fs != null)
 				_fs.Dispose();
 		}
-
-		protected void OpenBinaryReader() {
-			_fs = new FileStream(_Filename, FileMode.Open, FileAccess.Read);
-			_br = new BinaryReader(_fs);
-		}
-
+		
 		private void SetSourcFile(string srcFileName) {
 		    srcFileName = srcFileName.Remove(srcFileName.Length - 4, 4);
             srcFileName += ".dbf";

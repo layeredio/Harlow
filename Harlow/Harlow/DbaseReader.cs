@@ -85,7 +85,15 @@ namespace Harlow
 		}
 
 		private string ReadStringFromStream(BinaryReader br, int bufferLength) {
-			return new string(br.ReadChars(bufferLength));
+            // Has to be read as byte and converted to char
+            // because a 0x9e is appended to the end of some
+            // field descriptors and it throws off br.ReadChars( x )
+			char[] buffer = new char[bufferLength];
+
+			for(int i = 0; i < bufferLength; i++)
+				buffer[i] = (char)br.ReadByte();
+
+			return new string(buffer);;
 		}
     }
 }
