@@ -17,21 +17,34 @@ namespace Harlow
         protected int[] _OffsetOfRecord;
         protected int[] _LengthOfRecord;
         protected int _FeatureCount;
+		protected int _CoordinatePrecision = -1;
 
-        public ShapefileIndexer(string filename)
+		public int RequiredPrecision { get { return _CoordinatePrecision; } set { _CoordinatePrecision = value; } }
+
+		public ShapefileIndexer(string filename)
         {
             this._Filename = filename;
             _BBox = new double[4];
             ParseHeader(filename);// .shx file
             ReadIndex(filename); // .shx file
-        }
-        
-        /// <summary>
-        /// Reads the header of the .shx index file and extracts the 
-        /// information that is needed to read the remainder of the
-        /// .shx file and the .shp file.
-        /// </summary>
-        private void ParseHeader(string filename)
+		}
+
+		protected double ComputePrecision(double number)
+		{
+			double retVal = number;
+			if (_CoordinatePrecision != -1) {
+				retVal = Math.Round(number, _CoordinatePrecision);
+			}
+
+			return retVal;
+		}
+
+		/// <summary>
+		/// Reads the header of the .shx index file and extracts the 
+		/// information that is needed to read the remainder of the
+		/// .shx file and the .shp file.
+		/// </summary>
+		private void ParseHeader(string filename)
         {
             filename = filename.Remove(filename.Length - 4, 4);
             filename += ".shx";
@@ -52,7 +65,7 @@ namespace Harlow
             //Read the second part of the header as doubles
             for (i = 0; i < 8; ++i)
             {
-                header_b[i] = br.ReadDouble();
+                header_b[i] = ComputePrecision(br.ReadDouble());
             }
 
             br.Close();

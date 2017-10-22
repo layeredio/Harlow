@@ -89,8 +89,8 @@ namespace Harlow
                     br.ReadInt32(); //Record number (not needed)
                     br.ReadInt32(); //Content length (not needed)
                     tempFeature.Type = Enum.GetName(typeof(ShapeType), br.ReadInt32());
-                    tempFeature.Coordinates[0] = br.ReadDouble();
-                    tempFeature.Coordinates[1] = br.ReadDouble();
+                    tempFeature.Coordinates[0] = ComputePrecision(br.ReadDouble());
+                    tempFeature.Coordinates[1] = ComputePrecision(br.ReadDouble());
 
                     int colNum = 0;
                     foreach(string col in _Dbase.FieldNames)
@@ -120,11 +120,11 @@ namespace Harlow
                     br.ReadInt32(); //Record number (not needed)
                     br.ReadInt32(); //Content length (not needed)
                     tempFeature.Type = Enum.GetName(typeof(ShapeType), br.ReadInt32());
-                    tempFeature.Bbox[0] = br.ReadDouble(); // X
-                    tempFeature.Bbox[1] = br.ReadDouble(); // Y
-                    tempFeature.Bbox[2] = br.ReadDouble(); // X
-                    tempFeature.Bbox[3] = br.ReadDouble(); // Y
-                    br.ReadInt32(); // Number of parts (segments) gotten earlier
+                    tempFeature.Bbox[0] = ComputePrecision(br.ReadDouble()); // X
+                    tempFeature.Bbox[1] = ComputePrecision(br.ReadDouble()); // Y
+					tempFeature.Bbox[2] = ComputePrecision(br.ReadDouble()); // X
+					tempFeature.Bbox[3] = ComputePrecision(br.ReadDouble()); // Y
+					br.ReadInt32(); // Number of parts (segments) gotten earlier
                     tempPoints = new PointA[br.ReadInt32()]; // Number of points
 
                     segments = new int[segmentCount + 1];
@@ -138,7 +138,8 @@ namespace Harlow
                     //Read in *ALL* of the points in the feature
                     for (int c = 0; c < tempPoints.Length; ++c)
                     {
-                        tempPoints[c] = new PointA(br.ReadDouble(), br.ReadDouble());
+                        tempPoints[c] = new PointA(ComputePrecision(br.ReadDouble()),
+													ComputePrecision(br.ReadDouble()));
                     }
 
                     //Add in an ending point for the inner loop that follows (e) 
