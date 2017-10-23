@@ -14,18 +14,21 @@ namespace HarlowConsoleTestbed {
 			try{
 				Console.WriteLine("Starting Harlow interactions.");
 
-				string shapeFile = @"D:\Data\geo\tiger\TIGER2016\AREALM\tl_2016_02_arealm.shp";
+				string shapeFile = @"D:\Data\geo\tiger\TIGER2016\STATE\tl_2016_us_state.shp";
 				ShapeFileReader reader = new ShapeFileReader(shapeFile);
 				reader.RequiredPrecision = 6;
 				reader.LoadFile();
 
-				using( StreamWriter sw = new StreamWriter(@"C:\Projects\Layered.io\Data\JSON\HarlowFeatures\us_AreaLandmarks_02_features.json")){
-					sw.WriteLine("[");
+				using( StreamWriter sw = new StreamWriter(@"C:\Projects\Layered.io\Data\JSON\HarlowFeatures\us_states_features_temp.txt")){
+			//		sw.WriteLine("[");
 					foreach (var f in reader.Features) {
-						sw.Write(JsonConvert.SerializeObject(f));
-						sw.WriteLine(",");
+						string json = JsonConvert.SerializeObject(f);
+			//			var fe = JsonConvert.DeserializeObject<VectorShape>(json);
+
+						sw.WriteLine(json);
+			//			sw.WriteLine(",");
 					}
-					sw.WriteLine("]");
+			//		sw.WriteLine("]");
 				}
 
 			} finally {
